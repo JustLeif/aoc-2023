@@ -1,4 +1,4 @@
-pub fn day_one_part_one_prompt() -> &'static str {
+pub fn day_one_prompt() -> &'static str {
     "qzjggk1one
 two2seven7
 vszthreetwo6threethree4two3

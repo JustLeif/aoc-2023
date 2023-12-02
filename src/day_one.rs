@@ -1,5 +1,3 @@
-use crate::inputs::day_one_prompt;
-
 pub fn part_one(input: &str) -> usize {
     input
         .lines()
@@ -20,18 +18,18 @@ pub fn part_one(input: &str) -> usize {
 }
 
 #[test]
-fn test_part_one() {
+fn test_d1_p1() {
     let input = "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet";
     assert_eq!(part_one(input), 142);
-    let res = part_one(day_one_prompt());
+    let res = part_one(crate::inputs::DAY_ONE_PROMPT);
     println!("{res}");
 }
 
 #[test]
-fn test_part_two() {
+fn test_d1_p2() {
     let input = "two1nine\neightwothree\nabcone2threexyz\nxtwone3four\n4nineeightseven2\nzoneight234\n7pqrstsixteen";
     assert_eq!(part_two(input), 281);
-    let res = part_two(day_one_prompt());
+    let res = part_two(crate::inputs::DAY_ONE_PROMPT);
     println!("{res}");
 }
 

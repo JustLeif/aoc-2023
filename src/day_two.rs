@@ -44,6 +44,46 @@ fn test_d2_p1() {
     println!("{result}");
 }
 
+pub fn part_two(input: &str) -> usize {
+    input
+        .lines()
+        .map(|line| {
+            let mut max_red: usize = 0;
+            let mut max_green: usize = 0;
+            let mut max_blue: usize = 0;
+            for cubes in parse_handfull(line) {
+                match cubes {
+                    Cubes::Red(amt) => {
+                        if amt > max_red {
+                            max_red = amt;
+                        }
+                    }
+                    Cubes::Green(amt) => {
+                        if amt > max_green {
+                            max_green = amt;
+                        }
+                    }
+                    Cubes::Blue(amt) => {
+                        if amt > max_blue {
+                            max_blue = amt;
+                        }
+                    }
+                    Cubes::None => {}
+                }
+            }
+            max_red * max_green * max_blue
+        })
+        .sum()
+}
+
+#[test]
+fn test_d2_p2() {
+    let result = part_two("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green\nGame 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue\nGame 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red\nGame 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red\nGame 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green");
+    assert_eq!(result, 2286);
+    let result = part_two(crate::inputs::DAY_TWO_PROMPT);
+    println!("{result}");
+}
+
 fn parse_game_id(line: &str) -> usize {
     line.split(": ")
         .collect::<Vec<&str>>()
